@@ -1,0 +1,75 @@
+<h1>Listing food_tracks</h1>
+
+<% unless @food_tracks.empty? %>
+<div id="ft_totals">
+    <div id="chart_div"><img src="<%=@chart_img%>"/></div>
+    <table class="black">
+        <tr>
+            <td class="left">Proteins:</td>
+            <td><%= sprintf("%.2f", @ft_total_protein) %> g</td>
+            <td><%= number_to_percentage(@ft_p_part*100, :precision=>1) %></td>
+        </tr>
+        <tr>
+            <td class="left">Fat:</td>
+            <td><%= sprintf("%.2f", @ft_total_fat) %> g</td>
+            <td class="<%=@ft_f_part>0.15? 'red':'ok'%>"><%= number_to_percentage(@ft_f_part*100, :precision=>1) %></td>
+        </tr>
+        <tr>
+            <td class="left">Carbs:</td>
+            <td><%= sprintf("%.2f", @ft_total_carb) %> g</td>
+            <td><%= number_to_percentage(@ft_c_part*100, :precision=>1) %></td>
+        </tr>
+        <tr>
+            <td class="left"><b>kCals:<b></td>
+            <td><b><%= sprintf("%.2f", @food_tracks_total) %></b></td>
+        </tr>
+    </table>
+</div>
+<div>
+<p class="ft_date">
+    <%= @ft_date.strftime("%d %b %Y") %>
+</p>
+<% end %>
+
+<table>
+  <tr>
+    <th class="left">Date</th>
+    <th class="left">Food</th>
+    <th>Weight</th>
+    <th>Proteins</th>
+    <th>Fat</th>
+    <th>Carbs</th>
+    <th>kCal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @food_tracks.each do |food_track| %>
+  <tr>
+    <td class="left"><%= food_track.date.strftime("%H:%M") %></td>
+    <td class="left"><%=link_to food_track.food.name, edit_food_track_path(food_track) %></td>
+    <td><%= sprintf("%.0f",food_track.weight) %></td>
+    <td><%= sprintf("%.2f", food_track.weight*food_track.food.protein/100) %></td>
+    <td><%= sprintf("%.2f", food_track.weight*food_track.food.fat/100) %></td>
+    <td><%= sprintf("%.2f", food_track.weight*food_track.food.carb/100) %></td>
+    <td><%= sprintf("%.2f", food_track.weight*food_track.food.kkal/100) %></td>
+    <td><%= link_to 'X', food_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+<tr class="new_ft"><td/></tr>
+<form method="post">
+<tr class="new_ft">
+    <td><input id="food_track_date" name="ft_date]" size="2"></td>
+    <td><input id="food_name" name="food_track[food_name]" size=50></td>
+    <td><input id="food_track_weight" name="food_track[weight]" size="5" type="text"/></td>
+    <td><input type="submit" value="ok"/></td>
+</tr>
+</form>
+</table>
+</div>
+<br />
+
+<br />
+
+<%= link_to 'New Food track', new_food_track_path %>

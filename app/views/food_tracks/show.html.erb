@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @food_track.date %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @food_track.weight %>
+</p>
+
+
+<%= link_to 'Edit', edit_food_track_path(@food_track) %> |
+<%= link_to 'Back', food_tracks_path %>

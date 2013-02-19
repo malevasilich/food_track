@@ -1,0 +1,29 @@
+<%= form_for(@food_track) do |f| %>
+  <% if @food_track.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@food_track.errors.count, "error") %> prohibited this food_track from being saved:</h2>
+
+      <ul>
+      <% @food_track.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :food_id %><br />
+    <%= f.collection_select(:food_id, Food.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

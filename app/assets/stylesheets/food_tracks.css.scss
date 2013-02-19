@@ -1,0 +1,73 @@
+// Place all the styles related to the FoodTracks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	background: #fff;
+	border-collapse: collapse;
+	
+	text-align: right;
+	.left {
+			text-align: left;
+	}
+	
+	td, th {
+		padding-left: 8px;
+	}
+	th {
+		font-size: 14px;
+		font-weight: normal;
+		color: #039;
+		padding: 10px 8px;
+		background: #fff;
+		border-bottom: 2px solid #6678b1;
+	}
+	td {
+		color: #669;
+		padding: 4px 8px 0px 8px;
+	}
+
+	tr:nth-child(odd){
+		background: #ddf;
+	}
+
+	tr.new_ft {
+		background: #fff;
+	}
+
+	a,a:visited,a:focus,a:hover{
+		color: #669;
+		text-decoration:  none;
+		background-color: inherit;
+	}
+
+	tbody tr:hover td,a:hover {
+		color: #009;
+	}
+}
+
+#ft_totals {
+	float: right;
+	margin-right: 70px;
+	margin-top: 20px;
+
+	table {
+		border: 1px solid;
+		margin-left:50px;
+		margin-top:20px;
+
+		td {
+			color: black;
+			padding: 1px 10px 1px 8px;
+			font-family: "Verdana";
+			font-size: x-small;
+		}
+		.red {color: red;}
+	}
+}
+
+.ui-menu-item {
+	font-size: 11px;
+}

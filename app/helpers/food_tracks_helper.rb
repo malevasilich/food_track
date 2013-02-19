@@ -1,0 +1,2 @@
+module FoodTracksHelper
+end
