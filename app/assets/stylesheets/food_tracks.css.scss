@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//clearfix
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 table {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
@@ -70,4 +77,30 @@ table {
 
 .ui-menu-item {
 	font-size: 11px;
+}
+
+#new_food_window{
+	display: none;
+	position: absolute;
+	top:100px;
+	left: 300px;
+	width: 270px;
+	border: 1px solid;
+	padding: 10px 10px 10px 20px;
+	background: #fff;
+	line-height: 2em;
+
+	input:first-of-type {
+		width:249px;
+		margin-bottom: 10px;
+	}
+	input[type="text"]:not(:first-of-type){
+		position: absolute;
+		left: 140px;
+		width: 130px;
+	}
+	input[type="submit"] {
+		float:right;
+
+	}
 }
