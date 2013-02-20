@@ -5,8 +5,9 @@ class FoodTracksController < ApplicationController
   # GET /food_tracks
   # GET /food_tracks.json
   def index
+    # @ft_date = Date.today
     @ft_date = Date.today
-    @food_tracks = FoodTrack.all(:conditions => ["date >= ?", @ft_date])
+    @food_tracks = FoodTrack.all(:conditions => ["date >= ?", @ft_date], :order => "date(date) desc, date asc")
 
     unless @food_tracks.empty? 
       @food_tracks_total = @food_tracks.to_a.sum {|ft| ft.food.kkal/100*ft.weight}

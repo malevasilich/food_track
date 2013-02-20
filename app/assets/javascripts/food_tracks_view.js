@@ -23,7 +23,7 @@ $(function() {
 	// Enter as Tab in inputs
 	$(':input').keypress(function(e){
 	  if(e.which == 13){
-	  		if (this.id=="food_name" && cache[ this.value ] != null && cache[ this.value ].length == 0) {
+	  		if (this.id=="food_name" && (cache[ this.value ] == null || cache[ this.value ].length == 0)) {
 	  			// enter new product
 	  			$('#new_food_window').show();
 	  			$('#new_food_name').val(this.value);

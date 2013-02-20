@@ -9,6 +9,10 @@
   clear: both;
 }
 
+h4 {
+	margin: 1px;
+}
+
 table {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
@@ -34,6 +38,11 @@ table {
 	td {
 		color: #669;
 		padding: 4px 8px 0px 8px;
+	}
+
+	.running_total {
+		font-weight: bold;
+		background: #fff;
 	}
 
 	tr:nth-child(odd){

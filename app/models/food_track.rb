@@ -7,4 +7,7 @@ class FoodTrack < ActiveRecord::Base
     self.date ||= Time.now
   end
 
+  def kcals 
+  	self.food.kkal/100*self.weight
+  end
 end
