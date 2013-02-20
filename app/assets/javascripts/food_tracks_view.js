@@ -1,7 +1,7 @@
 $(function() {
 	$( "#food_name" ).focus();
 	$("#calendar").datepicker();
-	
+
 	// JQuery autocomplete
 	var cache = {};
 	$( "#food_name" ).autocomplete({
@@ -20,12 +20,12 @@ $(function() {
 		}
 	});
 
-	// Enter as Tab
+	// Enter as Tab in inputs
 	$(':input').keypress(function(e){
 	  if(e.which == 13){
 	  		if (this.id=="food_name" && cache[ this.value ] != null && cache[ this.value ].length == 0) {
 	  			// enter new product
-	  			$('#new_food_window').css({display: 'block'});
+	  			$('#new_food_window').show();
 	  			$('#new_food_name').val(this.value);
 	  			$('#new_food_p').focus();
 
@@ -41,6 +41,13 @@ $(function() {
 				}
 			}
 	  }
+	});
+
+	$(document).keyup(function(e) {
+	  if (e.keyCode == 27) { //esc 
+	  	$('#new_food_window').hide(); 
+  		$( "#food_name" ).focus();
+	  }  
 	});
 
 	// new food form callbacks
