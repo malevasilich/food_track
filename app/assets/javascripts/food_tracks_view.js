@@ -1,6 +1,7 @@
 $(function() {
 	$( "#food_name" ).focus();
-
+	$("#calendar").datepicker();
+	
 	// JQuery autocomplete
 	var cache = {};
 	$( "#food_name" ).autocomplete({
@@ -30,7 +31,10 @@ $(function() {
 
 	  			return false; //don't submit the parent form
 	  		} else {
-	  			if (this.type != "submit") {
+	  			if (this.type == "submit") {
+	  				// check if all the values are present
+	  				;
+	  			} else {
 			  		inputs = $(":input");
 		  			inputs[inputs.index(this)+1].focus();
 				    return false; //don't submit the form
