@@ -1,32 +1,5 @@
 <h1>Listing food_tracks</h1>
 <div id="calendar"></div>
-<% unless @food_tracks.empty? %>
-<div id="ft_totals">
-    <div id="chart_div"><img src="<%=@chart_img%>"/></div>
-    <table class="black">
-        <tr>
-            <td class="left">Proteins:</td>
-            <td><%= sprintf("%.2f", @ft_total_protein) %> g</td>
-            <td><%= number_to_percentage(@ft_p_part*100, :precision=>1) %></td>
-        </tr>
-        <tr>
-            <td class="left">Fat:</td>
-            <td><%= sprintf("%.2f", @ft_total_fat) %> g</td>
-            <td class="<%=@ft_f_part>0.15? 'red':'ok'%>"><%= number_to_percentage(@ft_f_part*100, :precision=>1) %></td>
-        </tr>
-        <tr>
-            <td class="left">Carbs:</td>
-            <td><%= sprintf("%.2f", @ft_total_carb) %> g</td>
-            <td><%= number_to_percentage(@ft_c_part*100, :precision=>1) %></td>
-        </tr>
-        <tr>
-            <td class="left"><b>kCals:<b></td>
-            <td colspan="2"><b><%= sprintf("%.2f", @food_tracks_total) %></b></td>
-        </tr>
-    </table>
-</div>
-<div>
-<% end %>
 
 <table>
   <tr>
@@ -41,10 +14,12 @@
     <th></th>
     <th></th>
   </tr>
-<tr class="new_ft"><td><h4><%= @food_tracks.first.date.to_date %></h3></td></tr>
 <% 
-last_day=@food_tracks.first.date.to_date
+last_day=@food_tracks.first.nil? ? Date.today : @food_tracks.first.date.to_date
 kcals = 0
+%>
+<tr class="new_ft"><td><h4><%= last_day %></h3></td></tr>
+<% 
 @food_tracks.each do |food_track| 
     if last_day != food_track.date.to_date 
 %>
@@ -86,24 +61,6 @@ kcals = 0
 
 <%= link_to 'New Food track', new_food_track_path %>
 
-<div id="new_food_window" class="group">
-    <h1>Добавление нового продукта</h1>
-    <p>Такого продукта не нашлось в базе.<br/>
-     В поля ниже нужно вручную ввести соотвествующие значения пищевой ценности продукта.</p>
-<form id="new_food_form" method="post" action="/foods" data-remote="true" data-type="json">
-    <label for="food_name">Наименование</label></br>
-    <input id="new_food_name" name="food[name]" type="text"/><br/>
-
-    <label for="food_p">Белки</label>
-    <input id="new_food_p" name="food[protein]" type="text"/><br/>
-    <label for="food_f">Жиры</label>
-    <input name="food[fat]" type="text"/><br/>
-    <label for="food_c">Углеводы</label>
-    <input name="food[carb]" type="text"/><br/>
-    <label for="food_w">Вода</label>
-    <input name="food[water]" type="text"/><br/>
-    <label for="food_kkal">Калорийность</label>
-    <input name="food[kkal]" type="text"/><br/>
-    <br/>
-    <input type="submit" value="Ok"/>
-</form></div>    
+<%= render 'totals' %>
+<%= render 'new_food_window' %>
+<%= render 'dietdairydb' %>

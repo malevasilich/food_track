@@ -4,6 +4,7 @@ $(function() {
 
 	// JQuery autocomplete
 	var cache = {};
+	var value_set=0;
 	$( "#food_name" ).autocomplete({
 		minLength: 2,
 		autoFocus: true,
@@ -18,12 +19,15 @@ $(function() {
 				response( data );
 			});
 		}
+  		 ,select: function( event, ui ) {
+		 	cache [ui.item.value] = [ui.item.value];
+		 }
 	});
 
 	// Enter as Tab in inputs
 	$(':input').keypress(function(e){
 	  if(e.which == 13){
-	  		if (this.id=="food_name" && (cache[ this.value ] == null || cache[ this.value ].length == 0)) {
+	  		if (this.id=="food_name" && !value_set && (cache[ this.value ] == null || cache[ this.value ].length == 0)) {
 	  			// enter new product
 	  			$('#new_food_window').show();
 	  			$('#new_food_name').val(this.value);

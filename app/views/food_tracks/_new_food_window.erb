@@ -1,0 +1,21 @@
+<div id="new_food_window" class="group">
+    <h1>Добавление нового продукта</h1>
+    <p>Такого продукта не нашлось в базе.<br/>
+     В поля ниже нужно вручную ввести соотвествующие значения пищевой ценности продукта.</p>
+<form id="new_food_form" method="post" action="/foods" data-remote="true" data-type="json">
+    <label for="food_name">Наименование</label></br>
+    <input id="new_food_name" name="food[name]" type="text"/><br/>
+
+    <label for="food_p">Белки</label>
+    <input id="new_food_p" name="food[protein]" type="text"/><br/>
+    <label for="food_f">Жиры</label>
+    <input name="food[fat]" type="text"/><br/>
+    <label for="food_c">Углеводы</label>
+    <input name="food[carb]" type="text"/><br/>
+    <label for="food_w">Вода</label>
+    <input name="food[water]" type="text"/><br/>
+    <label for="food_kkal">Калорийность</label>
+    <input name="food[kkal]" type="text"/><br/>
+    <br/>
+    <input type="submit" value="Ok"/>
+</form></div>    
