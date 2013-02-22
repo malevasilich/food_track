@@ -1,4 +1,9 @@
 FoodCalc::Application.routes.draw do
+  get "dietdairy/show" => "dietdairy#show"
+  post "dietdairy/show" => "dietdairy#showdiv"
+
+
+
   resources :food_tracks
 
   match 'foods/names' => 'foods#list_names'

@@ -1,0 +1,34 @@
+<script> window.onload = function() { dd_init(); } </script>
+<div id="dietdairy_div">
+<h1>Поиск в большой базе</h1>
+
+<%= form_tag('/dietdairy/show', :method=>:get) do %>
+      <%= search_field_tag('q', @q, :placeholder => 'Поиск продукта') %>
+<% end %>
+<table class="dietdairy_table">
+  <tr>
+    <th class="left">Наименование</th>
+    <th>Белки</th>
+    <th>Жиры</th>
+    <th>Углеводы</th>
+    <th>Вода</th>
+    <th>Калорийность</th>
+    <th></th>
+  </tr>
+
+<% @dd.each do |dd| %>
+<tr>
+	<td> <%= dd[1] %> </td>
+	<td> <%= dd[2] %> </td>
+	<td> <%= dd[3] %> </td>
+	<td> <%= dd[4] %> </td>
+	<td> <%= dd[5] %> </td>
+	<td> <%= dd[6] %> </td>
+</tr>
+<% end %>
+</table>
+<br/>
+<footer>
+Данные сайта <a href="http://dietadiary.com/">dietadiary.com</a>
+</footer>
+</div>

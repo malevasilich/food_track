@@ -124,3 +124,22 @@ table {
 	}
 }
 
+
+#q {
+	width: 100%;
+}
+
+table.dietdairy_table {
+	width: 100%;
+}
+
+#dietdairy_div {
+	display: none;
+	position: absolute;
+	top:100px;
+	left: 601px;
+	width: 500px;
+	border: 1px solid;
+	padding: 10px 10px 10px 20px;
+	background: #fff;
+}
