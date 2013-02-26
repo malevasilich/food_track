@@ -18,7 +18,7 @@ class FoodsControllerTest < ActionController::TestCase
 
   test "should create food" do
     assert_difference('Food.count') do
-      post :create, food: { carb: @food.carb, fat: @food.fat, gi: @food.gi, kkal: @food.kkal, name: @food.name, protein: @food.protein, water: @food.water }
+      post :create, food: { carb: @food.carb, fat: @food.fat, gi: @food.gi, kkal: @food.kkal, name: @food.name+'-1', protein: @food.protein, water: @food.water }
     end
 
     assert_redirected_to food_path(assigns(:food))

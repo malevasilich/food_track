@@ -1,10 +1,11 @@
 load_dietdairydb = function (searchstr) {
 	$('#dietdairy_div').show();
-	$('#dietdairy_qstr').val(searchstr);
+    $('#dietdairy_qstr').val(searchstr);
 	$('#dd_form').submit();
 }
 
 add_new_food = function (value){
+	$('#new_food_form input[type="text"]').val("");
 	$('#new_food_window').show();
 	$('#new_food_name').val(value);
 	$('#new_food_p').focus();
@@ -21,7 +22,8 @@ new_food_window_close_ok = function() {
 
 $(function() {
 	$( "#food_name" ).focus();
-	$("#calendar").datepicker();
+	$( "#food_name" ).val("");
+//	$("#calendar").datepicker();
 
 	// JQuery autocomplete
 	var cache = {};
@@ -53,9 +55,13 @@ $(function() {
 	  			add_new_food(this.value);
 	  			return false; //don't submit the parent form
 	  		} else {
-	  			if (this.type == "submit") {
+	  			if (this.id=="food_track_weight") {
 	  				// check if all the values are present
-	  				;
+	  				$('#add_food_track').submit();
+/*	  			} 
+	  			else if (this.id=="new_food_kk") {
+	  				// check if all the values are present
+	  				$('#new_food_form').submit();*/
 	  			} else {
 			  		inputs = $(":input");
 		  			inputs[inputs.index(this)+1].focus();

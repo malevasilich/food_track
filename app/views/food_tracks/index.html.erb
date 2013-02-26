@@ -18,13 +18,13 @@
 last_day=@food_tracks.first.nil? ? Date.today : @food_tracks.first.date.to_date
 kcals = 0
 %>
-<tr class="new_ft"><td><h4><%= last_day %></h3></td></tr>
+<tr class="new_ft"><td><h4><%= last_day %></h4></td></tr>
 <% 
-@food_tracks.each do |food_track| 
+@food_tracks.each   do |food_track|
     if last_day != food_track.date.to_date 
 %>
-        <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></p></td></tr>
-        <tr class="new_ft"><td><h4><%= food_track.date.to_date %></h3></td></tr>
+        <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td></tr>
+        <tr class="new_ft"><td><h4><%= food_track.date.to_date %></td></tr>
 <% 
         kcals =0
     end
@@ -45,9 +45,9 @@ kcals = 0
 <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td></tr>
 
 <tr class="new_ft"><td/></tr>
-<form method="post">
+<form id="add_food_track" method="post" autocomplete="off">
 <tr class="new_ft">
-    <td><input id="food_track_date" name="ft_date" size="2"></td>
+    <td><input id="food_track_date" name="food_track[date]" size=5></td>
     <td><input id="food_name" name="food_track[food_name]" size=50></td>
     <td><input id="food_track_weight" name="food_track[weight]" size="5" type="text"/></td>
     <td><input type="submit" value="ok"/></td>
@@ -63,6 +63,7 @@ kcals = 0
 
 <%= render 'totals' %>
 <%= render 'new_food_window' %>
-<div id="dietdairy_div">
+<div id="dietdairy_div" class="group">
     <%= render 'dietdairy/dietdairydb' %>
 </div>
+

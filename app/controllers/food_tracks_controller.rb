@@ -70,6 +70,22 @@ class FoodTracksController < ApplicationController
       params[:food_track][:food_id]=food.id
     end
 
+    ftime = params[:food_track].delete('date')
+    if ftime
+      begin
+        if ftime.length==4 
+          h=Integer(ftime[0,2])
+          m=Integer(ftime[2,2])
+        else
+          h=Integer(ftime[/0*(\d*)\:0*(\d*)/, 1])
+          m=Integer(ftime[/0*(\d*)\:0*(\d*)/, 2])
+        end
+        params[:food_track][:date] = Date.today + h.hours + m.minutes
+      rescue
+        params[:food_track][:date] = Time.now
+      end
+    end
+
     @food_track = FoodTrack.new(params[:food_track])
 
     respond_to do |format|

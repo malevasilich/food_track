@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: FoodOne
   protein: 1.5
   fat: 1.5
   carb: 1.5

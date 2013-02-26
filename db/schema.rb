@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130213094646) do
+ActiveRecord::Schema.define(:version => 20130226091414) do
 
   create_table "food_tracks", :force => true do |t|
     t.datetime "date"
@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(:version => 20130213094646) do
 
   create_table "foods", :force => true do |t|
     t.string   "name"
-    t.float    "protein"
-    t.float    "fat"
-    t.float    "carb"
-    t.float    "kkal"
-    t.float    "water"
-    t.integer  "gi"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.float    "protein",    :default => 0.0
+    t.float    "fat",        :default => 0.0
+    t.float    "carb",       :default => 0.0
+    t.float    "kkal",       :default => 0.0
+    t.float    "water",      :default => 0.0
+    t.integer  "gi",         :default => 0
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
 end
