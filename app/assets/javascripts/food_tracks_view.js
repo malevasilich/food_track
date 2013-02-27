@@ -12,13 +12,7 @@ add_new_food = function (value){
 	load_dietdairydb(value);
 }
 
-new_food_window_close_ok = function() {
-		$('#food_name').val($('#new_food_name').val());
-		$('#new_food_window').hide();
-		$('#dietdairy_div').hide();
-		$('#food_track_weight').focus();
-		cache = {};
-}
+
 
 $(function() {
 	$( "#food_name" ).focus();
@@ -28,6 +22,20 @@ $(function() {
 	// JQuery autocomplete
 	var cache = {};
 	var value_set=0;
+
+
+
+	new_food_window_close_ok = function() {
+			v = $('#new_food_name').val();
+			$('#food_name').val(v);
+			$('#new_food_window').hide();
+			$('#dietdairy_div').hide();
+			$('#food_track_weight').focus();
+			cache = {};
+			cache [v]=v;
+	}
+
+
 	$( "#food_name" ).autocomplete({
 		minLength: 2,
 		autoFocus: true,
