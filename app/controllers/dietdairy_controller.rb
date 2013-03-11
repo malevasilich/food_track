@@ -7,7 +7,6 @@ class DietdairyController < ApplicationController
       return [] if str.nil? || str.empty?
 
          dietdairy_url = "http://dietadiary.com/meal/food/json?sEcho=2&iColumns=7&sColumns=&iDisplayStart=0&iDisplayLength=50&sNames=%2C%2C%2C%2C%2C%2C&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&sSearch_3=&bRegex_3=false&bSearchable_3=true&sSearch_4=&bRegex_4=false&bSearchable_4=true&sSearch_5=&bRegex_5=false&bSearchable_5=true&sSearch_6=&bRegex_6=false&bSearchable_6=true&iSortingCols=1&iSortCol_0=1&sSortDir_0=asc&bSortable_0=true&bSortable_1=true&bSortable_2=true&bSortable_3=true&bSortable_4=true&bSortable_5=true&bSortable_6=true&main=1&_=1361418562484"
-         proxy = {:proxy_http_basic_authentication => %w(HTTP://border.kkb.kz:80 AArzamasov QWEasdzxc00)}
 
          dd_cache = Rails.cache.read('dd_cache')
          if dd_cache.nil?
@@ -18,7 +17,7 @@ class DietdairyController < ApplicationController
             dd_cache[str]
         else
           puts 'Getting from dietadiary.com...'
-          j = open(dietdairy_url+"&sSearch="+URI.escape(str), proxy).read
+          j = open(dietdairy_url+"&sSearch="+URI.escape(str)).read
           puts j
           r=JSON.parse(j)
           
