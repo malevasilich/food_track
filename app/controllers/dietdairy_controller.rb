@@ -17,7 +17,7 @@ class DietdairyController < ApplicationController
             dd_cache[str]
         else
           puts 'Getting from dietadiary.com...'
-          j = open(dietdairy_url+"&sSearch="+URI.escape(str)).read
+          j = open(dietdairy_url+"&sSearch="+URI.escape(str), 'User-Agent' => 'Ruby').read
           puts j
           r=JSON.parse(j)
           
