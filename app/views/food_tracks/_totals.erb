@@ -4,22 +4,23 @@
     <table class="black">
         <tr>
             <td class="left">Proteins:</td>
-            <td><%= sprintf("%.2f", @ft_total_protein) %> g</td>
             <td><%= number_to_percentage(@ft_p_part*100, :precision=>1) %></td>
+            <td><%= sprintf("%.2f", @ft_total_protein) %> g</td>
         </tr>
         <tr>
             <td class="left">Fat:</td>
-            <td><%= sprintf("%.2f", @ft_total_fat) %> g</td>
             <td class="<%=@ft_f_part>0.15? 'red':'ok'%>"><%= number_to_percentage(@ft_f_part*100, :precision=>1) %></td>
+            <td><%= sprintf("%.2f", @ft_total_fat) %> g</td>
         </tr>
         <tr>
             <td class="left">Carbs:</td>
-            <td><%= sprintf("%.2f", @ft_total_carb) %> g</td>
             <td><%= number_to_percentage(@ft_c_part*100, :precision=>1) %></td>
+            <td><%= sprintf("%.2f", @ft_total_carb) %> g</td>
         </tr>
         <tr>
             <td class="left"><b>kCals:<b></td>
-            <td colspan="2"><b><%= sprintf("%.2f", @food_tracks_total) %></b></td>
+            <td><b><%= sprintf("%.2f", @food_tracks_total) %></b></td>
+            <td/>
         </tr>
     </table>
 </div>
