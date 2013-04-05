@@ -15,13 +15,16 @@
     <th></th>
   </tr>
 <% 
-last_day=@food_tracks.first.nil? ? Date.today : @food_tracks.first.date.to_date
+#last_day=@food_tracks.first.nil? ? Date.today : @food_tracks.first.date.to_date
+last_day=@food_tracks.first.nil? ? DateTime.new : @food_tracks.first.date.to_datetime
 kcals = 0
 %>
-<tr class="new_ft"><td><h4><%= last_day %></h4></td></tr>
+<tr class="new_ft"><td><h4><%= last_day.to_date %></h4></td></tr>
 <% 
 @food_tracks.each   do |food_track|
-    if last_day != food_track.date.to_date 
+#    if last_day != food_track.date.to_date 
+#puts food_track.date.to_datetime - last_day
+    if food_track.date.to_datetime - last_day > Rational(1, 24) # 1 hour
 %>
         <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td></tr>
         <tr class="new_ft"><td><h4><%= food_track.date.to_date %></td></tr>
@@ -29,7 +32,8 @@ kcals = 0
         kcals =0
     end
     kcals+=food_track.kcals
-    last_day = food_track.date.to_date
+#    last_day = food_track.date.to_date
+    last_day = food_track.date.to_datetime
 %>
   <tr>
     <td class="left"><%= food_track.date.strftime("%H:%M") %></td>

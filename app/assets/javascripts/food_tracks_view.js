@@ -52,6 +52,7 @@ $(function() {
 		}
   		 ,select: function( event, ui ) {
 		 	cache [ui.item.value] = [ui.item.value];
+		 	$('#food_track_weight').focus();
 		 }
 	});
 

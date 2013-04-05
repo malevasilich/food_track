@@ -7,7 +7,7 @@ class FoodsController < ApplicationController
   # GET /foods/names.json
   def list_names
 
-      foods = Food.where("lower(name) like ?", "%#{params[:term].downcase}%")
+      foods = Food.where("lower(name) like ?", "%#{params[:term].mb_chars.downcase.to_s}%")
               .collect {|f| f.name}
 
     respond_to do |format|

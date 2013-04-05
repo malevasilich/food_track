@@ -5,8 +5,8 @@ class FoodTracksController < ApplicationController
   # GET /food_tracks
   # GET /food_tracks.json
   def index
-    # @ft_date = Date.today
-    @ft_date = Date.today
+     @ft_date = Date.today
+    #@ft_date = 3.days.ago
     @food_tracks = FoodTrack.all(:conditions => ["date >= ?", @ft_date], :order => "date(date) desc, date asc")
 
     unless @food_tracks.empty? 
