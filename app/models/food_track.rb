@@ -10,4 +10,9 @@ class FoodTrack < ActiveRecord::Base
   def kcals 
   	self.food.kkal/100*self.weight
   end
+
+  def fats
+  	self.food.fat/100*self.weight
+  end
+
 end

@@ -18,6 +18,7 @@
 #last_day=@food_tracks.first.nil? ? Date.today : @food_tracks.first.date.to_date
 last_day=@food_tracks.first.nil? ? DateTime.new : @food_tracks.first.date.to_datetime
 kcals = 0
+fat = 0
 %>
 <tr class="new_ft"><td><h4><%= last_day.to_date %></h4></td></tr>
 <% 
@@ -26,12 +27,16 @@ kcals = 0
 #puts food_track.date.to_datetime - last_day
     if food_track.date.to_datetime - last_day > Rational(1, 24) # 1 hour
 %>
-        <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td></tr>
+        <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
+        <td class="<%=fat*9/kcals>0.15? 'red':'ok'%>"><%=number_to_percentage(fat*9/kcals*100, :precision=>1)%></td>
+        </tr>
         <tr class="new_ft"><td><h4><%= food_track.date.to_date %></td></tr>
 <% 
         kcals =0
+        fat=0
     end
     kcals+=food_track.kcals
+    fat+=food_track.fats
 #    last_day = food_track.date.to_date
     last_day = food_track.date.to_datetime
 %>
