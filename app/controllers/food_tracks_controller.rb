@@ -16,9 +16,9 @@ class FoodTracksController < ApplicationController
       @ft_total_carb = @food_tracks.to_a.sum {|ft| ft.food.carb/100*ft.weight}
       @ft_total_fat = @food_tracks.to_a.sum {|ft| ft.food.fat/100*ft.weight}
 
-      @ft_p_part = @ft_total_protein*4/(@ft_total_protein*4+@ft_total_carb*4+@ft_total_fat*9)
-      @ft_f_part = @ft_total_fat*9/(@ft_total_protein*4+@ft_total_carb*4+@ft_total_fat*9)
-      @ft_c_part = @ft_total_carb*4/(@ft_total_protein*4+@ft_total_carb*4+@ft_total_fat*9)
+      @ft_p_part = @ft_total_protein*4/@food_tracks_total
+      @ft_f_part = @ft_total_fat*9/@food_tracks_total
+      @ft_c_part = @ft_total_carb*4/@food_tracks_total
 
       GoogleChart::PieChart.new('400x200', "",false) do |pc| 
         pc.data "Fat #{"%.1f\%" % (@ft_f_part*100)}", @ft_total_fat
