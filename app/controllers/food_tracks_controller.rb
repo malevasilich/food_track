@@ -81,7 +81,7 @@ class FoodTracksController < ApplicationController
           m=Integer(ftime[/0*(\d*)\:0*(\d*)/, 2])
         end
         # params[:food_track][:date] = Date.today + h.hours + m.minutes
-        params[:food_track][:date] = 1.days.ago.to_date + h.hours + m.minutes
+        params[:food_track][:date] = 1.days.ago + h.hours + m.minutes
       rescue
         params[:food_track][:date] = Time.now
       end
