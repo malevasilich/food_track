@@ -5,7 +5,7 @@ class FoodTracksController < ApplicationController
   # GET /food_tracks
   # GET /food_tracks.json
   def index
-    @ft_date = 1.days.ago
+    @ft_date = 1.days.ago.to_date
     #@ft_date = 3.days.ago
     @food_tracks = FoodTrack.all(:conditions => ["date >= ?", @ft_date], :order => "date(date) desc, date asc")
 
@@ -81,7 +81,7 @@ class FoodTracksController < ApplicationController
           m=Integer(ftime[/0*(\d*)\:0*(\d*)/, 2])
         end
         # params[:food_track][:date] = Date.today + h.hours + m.minutes
-        params[:food_track][:date] = Date.yesterday + h.hours + m.minutes
+        params[:food_track][:date] = 1.days.ago.to_date + h.hours + m.minutes
       rescue
         params[:food_track][:date] = Time.now
       end
