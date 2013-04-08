@@ -145,3 +145,16 @@ table.dietdairy_table {
 	padding: 10px 20px 10px 20px;
 	background: #fff;
 }
+
+ul.prev-next {
+	list-style: none;
+	font-size: large;
+	padding-left: 0;
+}
+
+li {
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline;
+}

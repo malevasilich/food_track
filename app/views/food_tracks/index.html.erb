@@ -1,6 +1,3 @@
-<h1>Listing food_tracks</h1>
-<div id="calendar"></div>
-
 <table>
   <tr>
     <th class="left">Date</th>
@@ -71,6 +68,18 @@ fat = 0
 <br />
 
 <%= link_to 'New Food track', new_food_track_path %>
+
+<div class="nav">
+<ul class="prev-next">
+    <li>←&nbsp;<a title="На день назад" class="prev" id="prev_page" href="<%=food_tracks_path%>?dateshift=<%=(@ds+1).to_s%>">назад</a></li>&nbsp;&nbsp;&nbsp;
+    <% if @ds>0 %>
+    <li>
+        <a title="На день вперед" class="next" id="next_page" href="<%=food_tracks_path%>?dateshift=<%=(@ds-1).to_s%>">
+            вперед</a>&nbsp;→
+    </li>
+    <% end %>
+</div>
+
 
 <%= render 'totals' %>
 <%= render 'new_food_window' %>
