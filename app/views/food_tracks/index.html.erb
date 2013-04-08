@@ -51,7 +51,9 @@ fat = 0
     <td><%= link_to 'X', food_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-<tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td></tr>
+<tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
+        <td class="<%=fat*9/kcals>0.15? 'red':'ok'%>"><%=number_to_percentage(fat*9/kcals*100, :precision=>1)%></td>
+</tr>
 
 <tr class="new_ft"><td/></tr>
 <form id="add_food_track" method="post" autocomplete="off">
