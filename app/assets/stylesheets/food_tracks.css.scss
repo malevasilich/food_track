@@ -31,14 +31,15 @@ table {
 		font-size: 14px;
 		font-weight: normal;
 		color: #039;
-		padding: 10px 8px;
+		padding: 10px 8px 2px;
 		background: #fff;
-		border-bottom: 2px solid #6678b1;
+		border-bottom: 1px solid #6678b1;
 	}
 	td {
 		color: #669;
-		padding: 4px 8px 0px 8px;
-	}
+  		padding: 1px 2px 0px 8px;
+		font-size: 12px;  		
+  	}
 
 	.running_total {
 		font-weight: bold;
@@ -46,7 +47,7 @@ table {
 	}
 
 	tr:nth-child(odd){
-		background: #ddf;
+		background: #eef;
 	}
 
 	tr.new_ft {
@@ -69,12 +70,12 @@ table {
 #ft_totals {
 	position: absolute;
 	right:2%;
-	top:2%;
+	top:7%;
 
 	table {
 		border: 1px solid;
 		position:absolute;
-		left:27%;
+		left:20%;
 
 		td {
 			color: black;

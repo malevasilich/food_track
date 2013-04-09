@@ -23,7 +23,7 @@ class FoodTracksController < ApplicationController
       @ft_f_part = @ft_total_fat*9/@food_tracks_total
       @ft_c_part = @ft_total_carb*4/@food_tracks_total
 
-      GoogleChart::PieChart.new('400x200', "",false) do |pc| 
+      GoogleChart::PieChart.new('360x180', "",false) do |pc| 
         pc.data "Fat #{"%.1f\%" % (@ft_f_part*100)}", @ft_total_fat
         pc.data "Proteins #{"%.1f\%" % (@ft_p_part*100)}", @ft_total_protein
         pc.data "Carbs #{"%.1f\%" % (@ft_c_part*100)}", @ft_total_carb
