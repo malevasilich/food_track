@@ -12,7 +12,6 @@
     <th></th>
   </tr>
 <% 
-#last_day=@food_tracks.first.nil? ? Date.today : @food_tracks.first.date.to_date
 last_day=@food_tracks.first.nil? ? DateTime.new : @food_tracks.first.date.to_datetime
 kcals = 0
 fat = 0
@@ -20,8 +19,6 @@ fat = 0
 <tr class="new_ft"><td><h4><%= last_day.to_date %></h4></td></tr>
 <% 
 @food_tracks.each   do |food_track|
-#    if last_day != food_track.date.to_date 
-#puts food_track.date.to_datetime - last_day
     if food_track.date.to_datetime - last_day > Rational(1, 24) # 1 hour
 %>
         <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
@@ -34,7 +31,6 @@ fat = 0
     end
     kcals+=food_track.kcals
     fat+=food_track.fats
-#    last_day = food_track.date.to_date
     last_day = food_track.date.to_datetime
 %>
   <tr>
@@ -45,6 +41,7 @@ fat = 0
     <td><%= sprintf("%.2f", food_track.weight*food_track.food.fat/100) %></td>
     <td><%= sprintf("%.2f", food_track.weight*food_track.food.carb/100) %></td>
     <td><%= sprintf("%.2f", food_track.weight*food_track.food.kkal/100) %></td>
+    <td class="fat-item"><%= number_to_percentage(100*9*food_track.fats/food_track.cluster_kcals, :precision=>1) %></td>
     <td><%= link_to 'X', food_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
