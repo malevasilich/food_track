@@ -2,7 +2,7 @@ FoodCalc::Application.routes.draw do
   get "dietdairy/show" => "dietdairy#show"
   post "dietdairy/show" => "dietdairy#showdiv"
 
-
+  post "food_tracks/updateweight" => "food_tracks#updateWeight"
 
   resources :food_tracks
 

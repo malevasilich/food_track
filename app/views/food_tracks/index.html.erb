@@ -36,7 +36,7 @@ fat = 0
   <tr>
     <td class="left"><%= food_track.date.strftime("%H:%M") %></td>
     <td class="left"><%=link_to food_track.food.name, edit_food_track_path(food_track) %></td>
-    <td><%= sprintf("%.0f",food_track.weight) %></td>
+    <td class="editableSingle weight id<%=food_track.id%>"><%= sprintf("%.0f",food_track.weight) %></td>
     <td><%= sprintf("%.2f", food_track.weight*food_track.food.protein/100) %></td>
     <td><%= sprintf("%.2f", food_track.weight*food_track.food.fat/100) %></td>
     <td><%= sprintf("%.2f", food_track.weight*food_track.food.carb/100) %></td>

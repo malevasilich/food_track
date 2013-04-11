@@ -130,4 +130,25 @@ class FoodTracksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /food_tracks/updateweight
+  def updateWeight
+    food_track = FoodTrack.find(params[:id])
+    
+    if food_track 
+      w = params[:data]
+      food_track.weight = Integer(w)
+
+      respond_to do |format|
+        if food_track.save
+  #        format.html { redirect_to food_tracks_url}
+          format.json { head :no_content }
+        else
+          format.html { render action: "update" }
+        end
+      end
+
+    end
+
+  end
 end

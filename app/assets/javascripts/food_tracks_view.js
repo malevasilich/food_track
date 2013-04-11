@@ -15,6 +15,16 @@ add_new_food = function (value){
 
 
 $(function() {
+
+	$.inlineEdit(
+		{weight: '/food_tracks/updateweight?id='}, // <--id will be added here by inlineEdit
+		{animate: false, 
+			afterSave: function(){
+				location.reload();
+			}
+		}
+	);
+
 	$( "#food_name" ).focus();
 	$( "#food_name" ).val("");
 //	$("#calendar").datepicker();
@@ -22,8 +32,6 @@ $(function() {
 	// JQuery autocomplete
 	var cache = {};
 	var value_set=0;
-
-
 
 	new_food_window_close_ok = function() {
 			v = $('#new_food_name').val();
