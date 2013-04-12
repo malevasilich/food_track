@@ -25,6 +25,11 @@ $(function() {
 		}
 	);
 
+	$("#showtxt").click(function(){
+		$("#txt").show();
+		$('#ft_totals').css('top: 350px;');
+	})
+
 	$( "#food_name" ).focus();
 	$( "#food_name" ).val("");
 //	$("#calendar").datepicker();

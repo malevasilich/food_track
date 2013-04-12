@@ -9,6 +9,24 @@
   clear: both;
 }
 
+body {
+	
+//	background-image: url('/assets/3-springGUI-psd.png');
+//	background-repeat: repeat-x;
+//	background-position:left bottom;
+}
+
+#chart_div img 
+{
+/*    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-top-style: double;
+    border-bottom-style: double;
+    border-top-color: #E1A60A;
+    border-bottom-color: #E1A60A;
+*/    padding: 18px 0px;
+}
+
 h4 {
 	margin: 1px;
 }
@@ -30,10 +48,12 @@ table {
 	th {
 		font-size: 14px;
 		font-weight: normal;
-		color: #039;
+		/*color: #039;*/
+		text-align: right;
+		color: 0;
 		padding: 10px 8px 2px;
 		background: #fff;
-		border-bottom: 1px solid #6678b1;
+		border-bottom: 1px solid #CCC;
 	}
 	td {
 		color: #669;
@@ -44,13 +64,22 @@ table {
   		font-size: smaller;
   	}
 
+  	.weight {
+  		cursor: pointer;
+  	}
+
+  	td.calculated {
+  		color: black;
+  	}
 	.running_total {
 		font-weight: bold;
+		color: black;
 		background: #fff;
 	}
 
 	tr:nth-child(odd){
-		background: #eef;
+		/*background: #eef;*/
+		background: #f0f0f0;
 	}
 
 	tr.new_ft {
@@ -63,22 +92,24 @@ table {
 		background-color: inherit;
 	}
 
-	tbody tr:hover td,a:hover {
+	tbody a:hover {
 		color: #009;
 	}
 }
 
 .red {color: red;}
+.ok {color: black;}
 
 #ft_totals {
 	position: absolute;
-	right:2%;
-	top:7%;
+	right:9%;
+	top:199px;
 
 	table {
-		border: 1px solid;
+		border: 1px solid #CCC;
 		position:absolute;
 		left:20%;
+		margin-top: 10px;
 
 		td {
 			color: black;
@@ -172,4 +203,16 @@ li {
 	margin: 0;
 	border: 0;
 	width: 2em;
+}
+
+.new_ft input {
+	border: 1px solid #CCC;
+}
+
+div.ink-vspace.dheader {
+	margin-bottom: 0;
+}
+
+#txt {
+	display: none;
 }

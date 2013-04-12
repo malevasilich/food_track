@@ -1,12 +1,26 @@
+<header class="ink-container ink-for-l">
+    <div class="ink-vspace dheader">
+        <h1 class="">Мы то - что мы едим?</h1>
+        <p>Кто бы мог подумать, что эта фраза настолько близка к действительности. С тех пор, как пару лет назад китайцы обнаружили микроРНК риса в крови человека, научный мир немного напрягся. Слишком сильно этот факт расходился с общепринятыми взглядами. Не то, что совсем уж невозможно, но с точки зрения классической молекулярной биологии — маловероятно. <sub id="showtxt">дальше...</sub></p>
+        <div id="txt">
+<p>Неудивительно, что эти результаты начали перепроверять, но подтверждение внезапно пришло с другой стороны. Один научный коллектив занимался вопросами изучения представленности микроРНК в плазме крови людей при различных патологиях. С помощью методов высокопроизводительного секвенирования они получили последовательности всего того, что плавает в нашем кровотоке. И с огромным удивлением <a href="http://www.plosone.org/article/info:doi/10.1371/journal.pone.0051009">обнаружили</a>, что значительная часть этого "всего" ну никак не соответствует человеческому геному. Тщательная перепроверка и анализ неожиданного открытия позволил установить, что наша кровь наполнена не только РНК бактерий и грибов (что вполне возможно, учитывая их наличие в организме), но и РНК пшеницы, риса, помидорок, винограда и даже насекомых. </p>
+<p>Что со всем этим делать, пока что никто не знает, но, видимо, мы являемся свидетелями смены стереотипов в отдельно взятой науке. Немного на русском <a href="http://nature-wonder.livejournal.com/218315.html">тут</a>.</p>    
+</div>
+    </div>
+</header>
+
+
+<div class="ink-container ink-vspace">
+<div class="ink-l50">
 <table>
   <tr>
-    <th class="left">Date</th>
-    <th class="left">Food</th>
-    <th>Weight</th>
-    <th>Proteins</th>
-    <th>Fat</th>
-    <th>Carbs</th>
-    <th>kCal</th>
+    <th class="left">время</th>
+    <th class="left">еда</th>
+    <th>вес</th>
+    <th>белки</th>
+    <th>жиры</th>
+    <th>carbs</th>
+    <th>ккал</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +30,7 @@ last_day=@food_tracks.first.nil? ? DateTime.new : @food_tracks.first.date.to_dat
 kcals = 0
 fat = 0
 %>
-<tr class="new_ft"><td><h4><%= last_day.to_date %></h4></td></tr>
+<tr class="new_ft"><td colspan="2" class="left"><h6><%= last_day.to_date %></h6></td></tr>
 <% 
 @food_tracks.each   do |food_track|
     if food_track.date.to_datetime - last_day > Rational(1, 24) # 1 hour
@@ -24,7 +38,7 @@ fat = 0
         <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
         <td class="<%=(kcals>0 && fat*9/kcals>0.15)? 'red':'ok'%>"><%=number_to_percentage(fat*9/kcals*100, :precision=>1)%></td>
         </tr>
-        <tr class="new_ft"><td><h4><%= food_track.date.to_date %></td></tr>
+        <tr class="new_ft"><td colspan="2" class="left"><h6><%= food_track.date.to_date %></h6></td></tr>
 <% 
         kcals =0
         fat=0
@@ -37,12 +51,12 @@ fat = 0
     <td class="left"><%= food_track.date.strftime("%H:%M") %></td>
     <td class="left"><%=link_to food_track.food.name, edit_food_track_path(food_track) %></td>
     <td class="editableSingle weight id<%=food_track.id%>"><%= sprintf("%.0f",food_track.weight) %></td>
-    <td><%= sprintf("%.2f", food_track.weight*food_track.food.protein/100) %></td>
-    <td><%= sprintf("%.2f", food_track.weight*food_track.food.fat/100) %></td>
-    <td><%= sprintf("%.2f", food_track.weight*food_track.food.carb/100) %></td>
-    <td><%= sprintf("%.2f", food_track.weight*food_track.food.kkal/100) %></td>
-    <td class="fat-item"><%= number_to_percentage(100*9*food_track.fats/food_track.cluster_kcals, :precision=>1) %></td>
-    <td><%= link_to 'X', food_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="calculated"><%= sprintf("%.2f", food_track.weight*food_track.food.protein/100) %></td>
+    <td class="calculated"><%= sprintf("%.2f", food_track.weight*food_track.food.fat/100) %></td>
+    <td class="calculated"><%= sprintf("%.2f", food_track.weight*food_track.food.carb/100) %></td>
+    <td class="calculated"><%= sprintf("%.2f", food_track.weight*food_track.food.kkal/100) %></td>
+    <td class="fat-item calculated"><%= number_to_percentage(100*9*food_track.fats/food_track.cluster_kcals, :precision=>1) %></td>
+    <td><%= link_to 'x', food_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
@@ -55,36 +69,47 @@ fat = 0
     <td><input id="food_track_date" name="food_track[date]" size=5></td>
     <td><input id="food_name" name="food_track[food_name]" size=50></td>
     <td><input id="food_track_weight" name="food_track[weight]" size="5" type="text"/></td>
-    <td><input type="submit" value="ok"/></td>
+    <td><input type="submit" value="OK"/></td>
 </tr>
 </form>
 </table>
 </div>
-<br />
-
-<br />
-
-<%= link_to 'New Food track', new_food_track_path %>
-
-<div class="nav">
-<ul class="prev-next">
-    <li>←&nbsp;<a title="На день назад" class="prev" id="prev_page" href="<%=food_tracks_path%>?dateshift=<%=(@ds+1).to_s%>">назад</a></li>&nbsp;&nbsp;&nbsp;
-    <% if @ds>0 %>
-    <li>
-        <a title="На день вперед" class="next" id="next_page" href="<%=food_tracks_path%>?dateshift=<%=(@ds-1).to_s%>">
-            вперед</a>&nbsp;→
-    </li>&nbsp;&nbsp;&nbsp;
-    <li>
-        <a class="next" id="today" href="<%=food_tracks_path%>">
-            сегодня</a>
-    </li>
-    <% end %>
 </div>
 
+<div class="ink-l50">
+    <%= render 'totals' %>
+</div>
 
-<%= render 'totals' %>
 <%= render 'new_food_window' %>
 <div id="dietdairy_div" class="group">
     <%= render 'dietdairy/dietdairydb' %>
 </div>
 
+
+        <footer>
+            <div class="ink-container">
+
+                <%= link_to 'форма ввода по отдельным полям', new_food_track_path %>
+                <nav class="ink-navigation">
+                    <ul class="ink-footer-nav">
+                        <li>←&nbsp;<a title="На день назад" class="prev" id="prev_page" href="<%=food_tracks_path%>?dateshift=<%=(@ds+1).to_s%>">назад</a></li>&nbsp;&nbsp;&nbsp;
+                        <% if @ds>0 %>
+                        <li>
+                            <a title="На день вперед" class="next" id="next_page" href="<%=food_tracks_path%>?dateshift=<%=(@ds-1).to_s%>">
+                                вперед</a>&nbsp;→
+                        </li>&nbsp;&nbsp;&nbsp;
+                        <li>
+                            <a class="next" id="today" href="<%=food_tracks_path%>">
+                                сегодня</a>
+                        </li>
+                        <% end %>
+                    </ul>
+                </nav>
+                <p class="copyright">
+                    All stuff reverved.<br>
+                    Stuff is a trademark created at the Stuff that makes Stuff
+                </p>
+            </div>
+        </footer>
+
+</div>
