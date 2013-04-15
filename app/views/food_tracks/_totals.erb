@@ -3,8 +3,8 @@
     <div id="chart_div"><img src="<%=@chart_img%>"/></div>
     <table class="black">
         <tr>
-            <td class="left"><b>kcals:<b></td>
-            <td><b><%= sprintf("%.2f", @food_tracks_total) %></b></td>
+            <td class="left kcals"><b>kcals:<b></td>
+            <td class="kcals"><b><%= sprintf("%.2f", @food_tracks_total) %></b></td>
 
             <td class="left">fat:</td>
             <td><%= sprintf("%.2f", @ft_total_fat) %> g</td>

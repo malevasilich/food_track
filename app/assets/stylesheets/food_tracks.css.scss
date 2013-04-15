@@ -60,11 +60,11 @@ table {
   	}
 
   	td.calculated {
-  		color: black;
+  		color: #555555;
   	}
 	.running_total {
 		font-weight: bold;
-		color: black;
+  		color: #555555;
 	}
 
 	.main tr:nth-child(odd){
@@ -74,6 +74,11 @@ table {
 
 	tr.input_raw, tr.new_ft {
 		background-color: #f7f7f7;
+	}
+
+	tr.separator td {
+		border-bottom: 1px solid #f0f0f0;
+		padding-bottom: 1em;
 	}
 
 	a,a:visited,a:focus,a:hover{
@@ -88,18 +93,19 @@ table {
 }
 
 .red {color: red;}
-.ok {color: black;}
+.ok {color: #555555;}
 
 #ft_totals {
 	float: right;
 	table {
 		td {
-			color: black;
+			color: #555555;
 			padding: 1px 10px 1px 8px;
 			font-family: "Verdana";
 			font-size: x-small;
 		}
 		.red {color: red;}
+		.kcals {font-size: larger;}
 	}
 }
 
@@ -197,7 +203,15 @@ div.ink-vspace.dheader {
 #showtxt {
 	font-size: smaller;
 	cursor: pointer;
+	text-decoration: none;
 }
 #txt {
 	display: none;
 }
+
+
+p a {
+	text-decoration: underline;
+}
+
+
