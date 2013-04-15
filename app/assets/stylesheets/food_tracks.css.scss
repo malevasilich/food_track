@@ -10,7 +10,6 @@
 }
 
 body {
-	
 //	background-image: url('/assets/3-springGUI-psd.png');
 //	background-repeat: repeat-x;
 //	background-position:left bottom;
@@ -34,7 +33,6 @@ h4 {
 table {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
-	background: #fff;
 	border-collapse: collapse;
 	
 	text-align: right;
@@ -52,7 +50,6 @@ table {
 		text-align: right;
 		color: 0;
 		padding: 10px 8px 2px;
-		background: #fff;
 		border-bottom: 1px solid #CCC;
 	}
 	td {
@@ -74,7 +71,6 @@ table {
 	.running_total {
 		font-weight: bold;
 		color: black;
-		background: #fff;
 	}
 
 	tr:nth-child(odd){
@@ -82,8 +78,8 @@ table {
 		background: #f0f0f0;
 	}
 
-	tr.new_ft {
-		background: #fff;
+	tr.input_raw, tr.new_ft {
+		background-color: #f7f7f7;
 	}
 
 	a,a:visited,a:focus,a:hover{
@@ -205,7 +201,7 @@ li {
 	width: 2em;
 }
 
-.new_ft input {
+.input_raw input {
 	border: 1px solid #CCC;
 }
 

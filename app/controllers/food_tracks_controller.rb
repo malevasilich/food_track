@@ -23,10 +23,16 @@ class FoodTracksController < ApplicationController
       @ft_f_part = @ft_total_fat*9/@food_tracks_total
       @ft_c_part = @ft_total_carb*4/@food_tracks_total
 
-      GoogleChart::PieChart.new('304x144', "",false) do |pc| 
-        pc.data "F #{"%.1f\%" % (@ft_f_part*100)}", @ft_total_fat
-        pc.data "P #{"%.1f\%" % (@ft_p_part*100)}", @ft_total_protein
-        pc.data "C #{"%.1f\%" % (@ft_c_part*100)}", @ft_total_carb
+      GoogleChart::PieChart.new('250x144', "",false) do |pc| 
+        pc.show_legend = true
+        pc.show_labels = false
+        pc.fill(:background, :solid, {:color => 'f7f7f7'})
+
+        #http://royaltutorials.com/google-charts-transparent-background/
+        #https://github.com/deepakjois/gchartrb/blob/master/lib/google_chart/modules/fills.rb
+        pc.data "Fat #{"%.1f\%" % (@ft_f_part*100)}", @ft_total_fat
+        pc.data "Prot #{"%.1f\%" % (@ft_p_part*100)}", @ft_total_protein
+        pc.data "Carb #{"%.1f\%" % (@ft_c_part*100)}", @ft_total_carb
         @chart_img=pc.to_url 
       end
     end
