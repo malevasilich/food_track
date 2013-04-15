@@ -26,8 +26,7 @@ $(function() {
 	);
 
 	$("#showtxt").click(function(){
-		$("#txt").show();
-		$('#ft_totals').css('top: 350px;');
+		$("#txt").slideToggle();
 	})
 
 	$( "#food_name" ).focus();

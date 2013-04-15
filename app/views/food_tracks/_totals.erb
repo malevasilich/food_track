@@ -3,24 +3,25 @@
     <div id="chart_div"><img src="<%=@chart_img%>"/></div>
     <table class="black">
         <tr>
-            <td class="left">Proteins:</td>
-            <td><%= number_to_percentage(@ft_p_part*100, :precision=>1) %></td>
-            <td><%= sprintf("%.2f", @ft_total_protein) %> g</td>
-        </tr>
-        <tr>
-            <td class="left">Fat:</td>
-            <td class="<%=@ft_f_part>0.15? 'red':'ok'%>"><%= number_to_percentage(@ft_f_part*100, :precision=>1) %></td>
+            <td class="left"><b>kcals:<b></td>
+            <td><b><%= sprintf("%.2f", @food_tracks_total) %></b></td>
+
+            <td class="left">fat:</td>
             <td><%= sprintf("%.2f", @ft_total_fat) %> g</td>
         </tr>
         <tr>
-            <td class="left">Carbs:</td>
-            <td><%= number_to_percentage(@ft_c_part*100, :precision=>1) %></td>
-            <td><%= sprintf("%.2f", @ft_total_carb) %> g</td>
+            <td class="left">from fat:</td>
+            <td><%= sprintf("%.0f", @ft_total_fat*9) %></td>
+
+            <td class="left">prot:</td>
+            <td><%= sprintf("%.2f", @ft_total_protein) %> g</td>
         </tr>
         <tr>
-            <td class="left"><b>kCals:<b></td>
-            <td><b><%= sprintf("%.2f", @food_tracks_total) %></b></td>
-            <td><%= sprintf("%.0f from fat", @ft_total_fat*9) %></td>
+            <td/>
+            <td class="<%=@ft_f_part>0.15? 'red':'ok'%>"><%= number_to_percentage(@ft_f_part*100, :precision=>1) %></td>
+            <td class="left">carb:</td>
+            <!-- <td><%= number_to_percentage(@ft_c_part*100, :precision=>1) %></td> -->
+            <td><%= sprintf("%.2f", @ft_total_carb) %> g</td>
         </tr>
     </table>
 </div>

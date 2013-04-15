@@ -17,13 +17,7 @@ body {
 
 #chart_div img 
 {
-/*    border-top-width: 4px;
-    border-bottom-width: 4px;
-    border-top-style: double;
-    border-bottom-style: double;
-    border-top-color: #E1A60A;
-    border-bottom-color: #E1A60A;
-*/    padding: 18px 0px;
+    padding-top: 18px;
 }
 
 h4 {
@@ -73,7 +67,7 @@ table {
 		color: black;
 	}
 
-	tr:nth-child(odd){
+	.main tr:nth-child(odd){
 		/*background: #eef;*/
 		background: #f0f0f0;
 	}
@@ -97,16 +91,8 @@ table {
 .ok {color: black;}
 
 #ft_totals {
-	position: absolute;
-	right:9%;
-	top:199px;
-
+	float: right;
 	table {
-		border: 1px solid #CCC;
-		position:absolute;
-		left:20%;
-		margin-top: 10px;
-
 		td {
 			color: black;
 			padding: 1px 10px 1px 8px;
@@ -208,7 +194,10 @@ li {
 div.ink-vspace.dheader {
 	margin-bottom: 0;
 }
-
+#showtxt {
+	font-size: smaller;
+	cursor: pointer;
+}
 #txt {
 	display: none;
 }
