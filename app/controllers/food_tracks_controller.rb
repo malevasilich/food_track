@@ -11,6 +11,8 @@ class FoodTracksController < ApplicationController
     dsp = params[:dateshift]
     @ds = Integer(dsp) if dsp
     @ft_date -= @ds 
+
+    @ft_date = Date.tomorrow  if params[:auth]!='1q2w3e'
     @food_tracks = FoodTrack.all(:conditions => ["date >= ? and date < ?", @ft_date, @ft_date+1], :order => "date(date) desc, date asc")
 
     unless @food_tracks.empty? 
