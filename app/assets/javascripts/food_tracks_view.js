@@ -1,3 +1,22 @@
+function refreshBackgrounds(selector) {
+  // Chrome shim to fix http://groups.google.com/a/chromium.org/group/chromium-bugs/browse_thread/thread/1b6a86d6d4cb8b04/739e937fa945a921
+  // Remove this once Chrome fixes its bug.
+  if (/chrome/.test(navigator.userAgent.toLowerCase())) {
+    $(selector).each(function() {
+      var $this = $(this);
+      if ($this.css("background")) {
+        var oldBackgroundImage = $this.css("background");
+        setTimeout(function() {
+          $this.css("background", oldBackgroundImage);
+        }, 1);
+      }
+    });
+  }
+}
+ 
+// You'll need to call this every time the event occurs that exposes the bug, such as changing tab divs.
+//refreshBackgrounds("*"); // but it'll be slow!
+
 load_dietdairydb = function (searchstr) {
 	$('#dietdairy_div').show();
     $('#dietdairy_qstr').val(searchstr);
@@ -31,7 +50,9 @@ $(function() {
 
 	$( "#food_name" ).focus();
 	$( "#food_name" ).val("");
-//	$("#calendar").datepicker();
+
+	refreshBackgrounds(".ft");
+
 
 	// JQuery autocomplete
 	var cache = {};

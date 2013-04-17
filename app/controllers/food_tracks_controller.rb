@@ -5,6 +5,7 @@ class FoodTracksController < ApplicationController
   # GET /food_tracks
   # GET /food_tracks.json
   def index
+    @bg_class="ft"
     @ft_date = Date.today
     @ds = 0
     dsp = params[:dateshift]

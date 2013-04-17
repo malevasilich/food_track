@@ -9,11 +9,6 @@
   clear: both;
 }
 
-body {
-//	background-image: url('/assets/3-springGUI-psd.png');
-//	background-repeat: repeat-x;
-//	background-position:left bottom;
-}
 
 #chart_div img 
 {
@@ -73,7 +68,7 @@ table {
 	}
 
 	tr.input_raw, tr.new_ft {
-		background-color: #f7f7f7;
+		/*background-color: #f7f7f7;*/
 	}
 
 	tr.separator td {
@@ -214,4 +209,9 @@ p a {
 	text-decoration: underline;
 }
 
-
+img.bgimg {
+	position: relative;
+	top: -48em;
+	left: -10em;
+	z-index: -1;
+}
