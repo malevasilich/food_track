@@ -12,7 +12,7 @@ class FoodTracksController < ApplicationController
     @ds = Integer(dsp) if dsp
     @ft_date -= @ds 
 
-    @ft_date = Date.parse("11/04/2013") if params[:auth]!='1q2w3e'
+    @ft_date = Date.parse("11/04/2013") if !current_user
     @food_tracks = FoodTrack.all(:conditions => ["date >= ? and date < ?", @ft_date, @ft_date+1], :order => "date(date) desc, date asc")
 
     unless @food_tracks.empty? 

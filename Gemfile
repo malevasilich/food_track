@@ -44,3 +44,6 @@ gem 'jquery-rails'
 
 gem 'gchartrb'
 gem 'jquery-ui-rails'
+
+gem "bcrypt-ruby", :require => "bcrypt"
+

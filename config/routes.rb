@@ -1,4 +1,6 @@
 FoodCalc::Application.routes.draw do
+  get "sessions/new"
+
   get "dietdairy/show" => "dietdairy#show"
   post "dietdairy/show" => "dietdairy#showdiv"
 
@@ -9,7 +11,11 @@ FoodCalc::Application.routes.draw do
   match 'foods/names' => 'foods#list_names'
   resources :foods
 
-
+  get "log_in" => "sessions#new", :as => "log_in"  
+  get "sign_up" => "users#new", :as => "sign_up"  
+  root :to => "users#new"  
+  resources :users  
+  resources :sessions  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
