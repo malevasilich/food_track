@@ -11,7 +11,9 @@ FoodCalc::Application.routes.draw do
   match 'foods/names' => 'foods#list_names'
   resources :foods
 
-  get "log_in" => "sessions#new", :as => "log_in"  
+  get "login" => "sessions#new", :as => "login"  
+  get "logout" => "sessions#delete", :as => "logout"  
+
   get "sign_up" => "users#new", :as => "sign_up"  
   root :to => "users#new"  
   resources :users  

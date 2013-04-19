@@ -2,6 +2,7 @@ require 'rubygems'
 require 'google_chart'
 
 class FoodTracksController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
   # GET /food_tracks
   # GET /food_tracks.json
   def index

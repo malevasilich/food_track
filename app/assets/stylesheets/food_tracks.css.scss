@@ -9,10 +9,6 @@
   clear: both;
 }
 
-body {
-	overflow:hidden;
-}
-
 #chart_div img 
 {
     padding-top: 18px;
@@ -217,4 +213,8 @@ img.bgimg {
 	top: -48em;
 	left: -10em;
 	z-index: -1;
+}
+
+footer a{
+	text-decoration: none;
 }
