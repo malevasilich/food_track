@@ -2,6 +2,7 @@
 require "open-uri"
 
 class FoodsController < ApplicationController
+  skip_before_filter :authorize, :only => :list_names
 
   # GET /foods/names
   # GET /foods/names.json
