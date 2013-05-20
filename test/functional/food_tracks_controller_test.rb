@@ -3,6 +3,7 @@ require 'test_helper'
 class FoodTracksControllerTest < ActionController::TestCase
   setup do
     @food_track = food_tracks(:one)
+    login_as_user
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class FoodTracksControllerTest < ActionController::TestCase
 
   test "should create food_track" do
     assert_difference('FoodTrack.count') do
-      post :create, food_track: { date: @food_track.date, weight: @food_track.weight }
+      post :create, food_track: { date: @food_track.date, weight: @food_track.weight, food_id: @food_track.food_id }
     end
 
     assert_redirected_to food_tracks_path

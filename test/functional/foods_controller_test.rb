@@ -3,6 +3,7 @@ require 'test_helper'
 class FoodsControllerTest < ActionController::TestCase
   setup do
     @food = foods(:one)
+    login_as_user
   end
 
   test "should get index" do
