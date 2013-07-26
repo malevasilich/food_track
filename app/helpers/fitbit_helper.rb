@@ -32,6 +32,8 @@ end
 				  date: Time.now.strftime("%Y-%m-%d")
 				})
 
+				pp ft
+
 			    ft.update_attributes(fitbit_logid: fl["foodLog"]["logId"])
 		    end
 		end
