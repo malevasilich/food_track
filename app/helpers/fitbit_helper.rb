@@ -35,7 +35,7 @@ end
 				})
 				puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
-				pp ft
+				puts ft
 
 			    ft.update_attributes(fitbit_logid: fl["foodLog"]["logId"])
 
