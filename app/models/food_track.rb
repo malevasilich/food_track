@@ -1,6 +1,6 @@
 class FoodTrack < ActiveRecord::Base
 	belongs_to :food
-  	attr_accessible :date, :weight, :food_id, :food_name	
+  	attr_accessible :date, :weight, :food_id, :food_name, :fitbit_logid
     validates_presence_of :weight, :food_id
   	before_save :init_data
   

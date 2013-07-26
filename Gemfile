@@ -45,3 +45,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'gchartrb'
 gem 'jquery-ui-rails'
 gem 'fitgem'
+
+#bg queues
+gem 'sucker_punch'

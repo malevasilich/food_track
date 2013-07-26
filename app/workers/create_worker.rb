@@ -1,0 +1,8 @@
+#sucker_punch CreateWorker
+class CreateWorker
+  include SuckerPunch::Worker
+
+  def perform(food_track)
+  	FitbitClient.instance.log_food(food_track.id)
+  end
+end

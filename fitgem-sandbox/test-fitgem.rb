@@ -57,12 +57,14 @@ end
 # Add Fitgem API calls on the client object below this line
  
 #pp client.activities_on_date 'today'
-pp client.foods_on_date 'today'
-
-client.log_food ({
+fl = client.log_food ({
   foodId: 4982470,  # Ручной ввод калорий
   mealTypeId: 7, #Anytime
   unitId: 401, #cl
   amount: 3,
-  date: "2013-05-16"
+  date: "2013-05-21"
 })
+
+pp fl
+puts "Logged food log and got id=#{fl["foodLog"]["logId"]}"
+
