@@ -157,7 +157,7 @@ class FoodTracksController < ApplicationController
 
       respond_to do |format|
         if food_track.save
-          UpdateWorker.new.async.perform(food_track) if !Rails.env.test? && @food_track.fitbit_logid
+          UpdateWorker.new.async.perform(food_track) if !Rails.env.test? && food_track.fitbit_logid
   #        format.html { redirect_to food_tracks_url}
           format.json { head :no_content }
         else
