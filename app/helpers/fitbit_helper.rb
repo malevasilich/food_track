@@ -22,9 +22,7 @@ end
 
 		def log_food(food_track_id)
 			ActiveRecord::Base.connection_pool.with_connection do
-				puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 				ft = FoodTrack.find(food_track_id)
-				puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 				
 				fl = @client.log_food ({
 				  foodId: 4982470,  # Ручной ввод калорий
@@ -33,14 +31,8 @@ end
 				  amount: ft.kcals,
 				  date: Time.now.strftime("%Y-%m-%d")
 				})
-				puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-
-				puts fl
-				pp fl
 
 			    ft.update_attributes(fitbit_logid: fl["foodLog"]["logId"])
-
-				puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 		    end
 		end
 
