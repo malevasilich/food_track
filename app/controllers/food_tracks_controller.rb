@@ -44,6 +44,7 @@ class FoodTracksController < ApplicationController
       @food_tracks.each do |ft|
         if ft.fitbit_logid.nil?
           CreateWorker.new.async.perform(ft) if !Rails.env.test?
+          #heroku?
         end
       end
 
