@@ -39,6 +39,14 @@ class FoodTracksController < ApplicationController
         pc.data "Carb #{"%.1f\%" % (@ft_c_part*100)}", @ft_total_carb
         @chart_img=pc.to_url
       end
+
+      #force FitBit sync on page load for not-sync'ed entries
+      @food_tracks.each do |ft|
+        if ft.fitbit_logid.nil?
+          CreateWorker.new.async.perform(ft) if !Rails.env.test?
+        end
+      end
+
     end
 
     respond_to do |format|
