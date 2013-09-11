@@ -31,6 +31,8 @@ end
 				  amount: ft.kcals,
 				  date: Time.now.strftime("%Y-%m-%d")
 				})
+				puts "fl response:"
+				pp fl
 
 			    ft.update_attributes(fitbit_logid: fl["foodLog"]["logId"])
 		    end
