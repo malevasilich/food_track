@@ -29,27 +29,31 @@ end
 					  foodId: 4982470,  # Ручной ввод калорий
 					  mealTypeId: 7, #Anytime
 					  unitId: 401, #cl
-					  amount: ft.kcals,
+					  amount: ft.kcals.round(2),
 					  date: Time.now.strftime("%Y-%m-%d")
 					})
-					puts "fl response:"
-					pp fl
+	
+				    ft.update_attributes(fitbit_logid: fl["foodLog"]["logId"])
 				rescue
-					puts "FitbitClient reconnecting..."
-					@client = nil
-					initialize
-					fl = @client.log_food ({
-					  foodId: 4982470,  # Ручной ввод калорий
-					  mealTypeId: 7, #Anytime
-					  unitId: 401, #cl
-					  amount: ft.kcals,
-					  date: Time.now.strftime("%Y-%m-%d")
-					})
+					puts "FitbitClient failed!"
 					puts "fl response:"
 					pp fl
-				end
+					pp @client
+					pp ft
 
-			    ft.update_attributes(fitbit_logid: fl["foodLog"]["logId"])
+					# puts "FitbitClient reconnecting..."
+					# @client = nil
+					# initialize
+					# fl = @client.log_food ({
+					#   foodId: 4982470,  # Ручной ввод калорий
+					#   mealTypeId: 7, #Anytime
+					#   unitId: 401, #cl
+					#   amount: sprintf("%.2f", ft.kcals),
+					#   date: Time.now.strftime("%Y-%m-%d")
+					# })
+					# puts "fl response:"
+					# pp fl
+				end
 		    end
 		end
 
