@@ -24,15 +24,30 @@ end
 			ActiveRecord::Base.connection_pool.with_connection do
 				ft = FoodTrack.find(food_track_id)
 				
-				fl = @client.log_food ({
-				  foodId: 4982470,  # Ручной ввод калорий
-				  mealTypeId: 7, #Anytime
-				  unitId: 401, #cl
-				  amount: ft.kcals,
-				  date: Time.now.strftime("%Y-%m-%d")
-				})
-				puts "fl response:"
-				pp fl
+				begin
+					fl = @client.log_food ({
+					  foodId: 4982470,  # Ручной ввод калорий
+					  mealTypeId: 7, #Anytime
+					  unitId: 401, #cl
+					  amount: ft.kcals,
+					  date: Time.now.strftime("%Y-%m-%d")
+					})
+					puts "fl response:"
+					pp fl
+				rescue
+					puts "FitbitClient reconnecting..."
+					@client = nil
+					initialize
+					fl = @client.log_food ({
+					  foodId: 4982470,  # Ручной ввод калорий
+					  mealTypeId: 7, #Anytime
+					  unitId: 401, #cl
+					  amount: ft.kcals,
+					  date: Time.now.strftime("%Y-%m-%d")
+					})
+					puts "fl response:"
+					pp fl
+				end
 
 			    ft.update_attributes(fitbit_logid: fl["foodLog"]["logId"])
 		    end
