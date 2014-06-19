@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <td/>
-            <td class="<%=@ft_f_part>0.15? 'red':'ok'%>"><%=number_to_percentage(@ft_f_part*100, :precision=>1) if @ft_f_part>0.15%></td>
+            <td class="<%=@ft_f_part>0.20? 'red':'ok'%>"><%=number_to_percentage(@ft_f_part*100, :precision=>1) if @ft_f_part>0.15%></td>
             <td class="left">carb:</td>
             <!-- <td><%= number_to_percentage(@ft_c_part*100, :precision=>1) %></td> -->
             <td><%= sprintf("%.2f", @ft_total_carb) %> g</td>

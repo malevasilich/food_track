@@ -29,22 +29,29 @@
 last_day=@food_tracks.first.nil? ? DateTime.now : @food_tracks.first.date.to_datetime
 kcals = 0
 fat = 0
+prot = 0
 %>
 <tr class="new_ft"><td colspan="2" class="left running_total"><%= last_day.to_date %></td></tr>
 <% 
 @food_tracks.each   do |food_track|
     if food_track.date.to_datetime - last_day > Rational(1, 24) # 1 hour
 %>
-        <tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
-        <td class="<%=(kcals>0 && fat*9/kcals>0.15)? 'red':'ok'%>"><%=number_to_percentage(fat*9/kcals*100, :precision=>1)%></td>
+        <tr class="new_ft">
+            <td colspan=4 class="prot-item"><a class="prot-item"><%= sprintf("%.2f", prot) %></a></td>
+            <td/>
+            <td/>
+            <td><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
+            <td class="<%=(kcals>0 && fat*9/kcals>0.20)? 'red':'ok'%>"><%=number_to_percentage(fat*9/kcals*100, :precision=>1)%></td>
         </tr>
         <tr class="separator"><td colspan="9"/></tr>
 <% 
         kcals =0
         fat=0
+        prot = 0
     end
     kcals+=food_track.kcals
     fat+=food_track.fats
+    prot+=food_track.proteins
     last_day = food_track.date.to_datetime
 %>
   <tr>
@@ -59,9 +66,16 @@ fat = 0
     <td><%= link_to 'x', food_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-<tr class="new_ft"><td colspan=7><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
-        <td class="<%=(kcals>0 && fat*9/kcals>0.15)? 'red':'ok'%>"><%=number_to_percentage(kcals>0? fat*9/kcals*100 : 0, :precision=>1)%></td>
-</tr>
+        
+        <tr class="new_ft">
+            <td colspan=4 class="prot-item"><a class="prot-item"><%= sprintf("%.2f", prot) %></a></td>
+            <td/>
+            <td/>
+            <td><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
+            <td class="<%=(kcals>0 && fat*9/kcals>0.20)? 'red':'ok'%>"><%=number_to_percentage(fat*9/kcals*100, :precision=>1)%></td>
+        </tr>
+
+        <tr class="hiddenseparator"><td colspan="9"/></tr>
 
 <tr class="new_ft"><td/></tr>
 <form id="add_food_track" method="post" autocomplete="off">

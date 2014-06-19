@@ -49,6 +49,14 @@ table {
   		font-size: smaller;
   	}
 
+  	td.prot-item {
+  		font-size: smaller;
+  	}
+
+  	a.prot-item {
+  		color: #555555;
+  	}
+
   	.weight {
   		cursor: pointer;
   	}
@@ -75,6 +83,11 @@ table {
 		padding-bottom: 1em;
 	}
 
+	tr.hiddenseparator td {
+//		border-bottom: 1px solid #f0f0f0;
+		padding-bottom: 1em;
+	}
+
 	a,a:visited,a:focus,a:hover{
 		color: #669;
 		text-decoration:  none;
@@ -86,8 +99,8 @@ table {
 	}
 }
 
-.red {color: red;}
-.ok {color: #555555;}
+.red {color: red;   		font-size: smaller;}
+.ok {color: #a0a0a0;  		font-size: smaller;}
 
 #ft_totals {
 	float: right;

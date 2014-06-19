@@ -13,7 +13,11 @@ class FoodTrack < ActiveRecord::Base
   end
 
   def fats
-  	self.food.fat/100*self.weight
+    self.food.fat/100*self.weight
+  end
+
+  def proteins
+  	self.food.protein/100*self.weight
   end
 
   def load_cluster
