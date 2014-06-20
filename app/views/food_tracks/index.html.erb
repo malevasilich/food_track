@@ -72,7 +72,7 @@ prot = 0
             <td/>
             <td/>
             <td><a class="running_total"><%= sprintf("%.2f", kcals) %></a></td>
-            <td class="<%=(kcals>0 && fat*9/kcals>0.20)? 'red':'ok'%>"><%=number_to_percentage(fat*9/kcals*100, :precision=>1)%></td>
+            <td class="<%=(kcals>0 && fat*9/kcals>0.20)? 'red':'ok'%>"><%=number_to_percentage(kcals>0? fat*9/kcals*100 : 0, :precision=>1)%></td>
         </tr>
 
         <tr class="hiddenseparator"><td colspan="9"/></tr>
