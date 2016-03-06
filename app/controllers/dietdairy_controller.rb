@@ -17,7 +17,8 @@ class DietdairyController < ApplicationController
             dd_cache[str]
         else
           puts 'Getting from dietadiary.com...'
-          j = open(dietdairy_url+"&sSearch="+URI.escape(str), 'User-Agent' => 'Ruby').read
+# TODO: DietDairy stopped responding, need to fix it. disable for now to prevent 500 error
+#          j = open(dietdairy_url+"&sSearch="+URI.escape(str), 'User-Agent' => 'Ruby').read
           puts j
           r=JSON.parse(j)
           
