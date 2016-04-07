@@ -43,7 +43,7 @@ class FoodTracksController < ApplicationController
       #force FitBit sync on page load for not-sync'ed entries
       @food_tracks.each do |ft|
         if ft.fitbit_logid.nil?
-          CreateWorker.new.async.perform(ft) if !Rails.env.test?
+          CreateWorker.perform_async(ft) if !Rails.env.test?
           #heroku?
 #c14?
         end
@@ -132,7 +132,7 @@ class FoodTracksController < ApplicationController
 
     respond_to do |format|
       if @food_track.update_attributes(params[:food_track])
-        UpdateWorker.new.async.perform(@food_track) if !Rails.env.test? && @food_track.fitbit_logid
+        UpdateWorker.perform_async(@food_track) if !Rails.env.test? && @food_track.fitbit_logid
         format.html { redirect_to @food_track, notice: 'Food track was successfully updated.' }
         format.json { head :no_content }
       else
@@ -167,7 +167,7 @@ class FoodTracksController < ApplicationController
 
       respond_to do |format|
         if food_track.save
-          UpdateWorker.new.async.perform(food_track) if !Rails.env.test? && food_track.fitbit_logid
+          UpdateWorker.perform_async(food_track) if !Rails.env.test? && food_track.fitbit_logid
   #        format.html { redirect_to food_tracks_url}
           format.json { head :no_content }
         else
